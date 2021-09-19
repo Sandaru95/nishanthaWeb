@@ -1,0 +1,18 @@
+/* ======================================================== Main Navbar Styles */
+#navbar-user-account-block .icon{
+    text-align: center;
+}
+#navbar-user-account-block .icon i{
+    font-size: 24px;
+}
+#navbar-user-account-block:hover{
+    cursor: pointer;
+}
+#navbar-user-account-block:hover .icon i{
+    color: #62ab00;
+    transition: 0.4s;
+}
+#navbar-user-account-block:hover a{
+    color: #62ab00;
+}
+/* ======================================================== Mobile Navbar Styles */

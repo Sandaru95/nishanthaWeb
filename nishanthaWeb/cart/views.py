@@ -8,3 +8,6 @@ class OrderCompleteView(TemplateView):
 
 class WishlistView(TemplateView):
     template_name = "cart/wishlist.html"
+
+class CheckoutView(TemplateView):
+    template_name = "cart/checkout.html"

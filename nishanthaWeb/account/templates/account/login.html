@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="site-wrapper" id="top">
+	<!-- ============================================= Top Nav Bar ================================= -->
+	{% include 'navbar.html' %}
+	<!-- ============================================= Breadcrumb Section ================================= -->
+	<section class="breadcrumb-section">
+		<h2 class="sr-only">Site Breadcrumb</h2>
+		<div class="container">
+			<div class="breadcrumb-contents">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+						<li class="breadcrumb-item active">Login</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</section>
+	<!--=============================================
+    =            Login Register page content         =
+    \=============================================-->
+	<main class="page-section inner-page-sec-padding-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+					<form action="{% url 'account:login' %}" method="POST">
+						{% csrf_token %}
+						<div class="login-form">
+							<h4 class="login-title">Returning Customer</h4>
+							<p><span class="font-weight-bold">I am a returning customer</span></p>
+							<div class="row">
+								<div class="col-md-12 col-12 mb--15">
+									<label for="username">Username</label>
+									<input class="mb-0 form-control" type="text" id="username" name="username"
+										placeholder="Enter your Username">
+								</div>
+								<div class="col-12 mb--20">
+									<label for="password">Password</label>
+									<input class="mb-0 form-control" type="password" id="password" name="password"
+										placeholder="Enter your Password">
+								</div>
+								<div class="col-lg-12 col-12 mb--20">
+									<label>
+										<input type="checkbox" checked="checked" name="remember"> Remember me
+									</label>
+								</div>
+								<div class="col-md-12">
+									<input class="btn btn-outlined" type="submit" value="Login">
+								</div>
+							</div>
+							<br>
+							{% for message in messages %}
+							<div class="alert alert-primary" role="alert">
+								{{ message }}
+							</div>
+							{% endfor %}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>
+{% endblock %}
