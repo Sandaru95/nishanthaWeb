@@ -2,26 +2,8 @@ from django.db import models
 
 from datetime import date
 
-class Author(models.Model):
-    name = models.CharField(max_length=100)
-    name_sinhala = models.CharField(max_length=250, default=" ")
-    address = models.CharField(max_length=500, blank=True, null=True)
-    tel = models.CharField(max_length=11, blank=True, null=True)
-
-    def __str__(self):
-        return self.author
-        
-class Publisher(models.Model):
-    title = models.CharField(max_length=100)
-    title_sinhala = models.CharField(max_length=250, default=" ")
-    logo = models.ImageField(upload_to="publishers/logo", blank=True, null=True)
-    address = models.CharField(max_length=250, blank=True, null=True)
-    land_tel = models.CharField(max_length=11, blank=True, null=True, default="")
-    tel1 = models.CharField(max_length=11, blank=True, null=True, default="")
-    tel2 = models.CharField(max_length=11, blank=True, null=True, default="")
-
-    def __str__(self):
-        return self.title
+from authors.models import Author
+from publishers.models import Publisher
 
 class BookType(models.Model):
     title = models.CharField(max_length=150)
@@ -43,6 +25,8 @@ class Book(models.Model):
     stock_available = models.BooleanField(default=True)
     added_on = models.DateField(default=date.today)
     description = models.TextField(max_length=1000)
+    no_visits = models.IntegerField(default=0)
+    no_sales = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.title} - {self.publisher.title}"

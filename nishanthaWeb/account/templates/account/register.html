@@ -19,7 +19,7 @@
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
-						<li class="breadcrumb-item active">Login</li>
+						<li class="breadcrumb-item active">Register</li>
 					</ol>
 				</nav>
 			</div>
@@ -28,7 +28,7 @@
 	<!--=============================================
     =            Register page content         =
     =================================================-->
-	<main class="page-section inner-page-sec-padding-bottom">
+	<main class="page-section inner-page-sec-padding-bottom" id="register-content-div">
 		<div class="container">
 			<div class="row">
 				<!-- ************************************** Signin With Google -->
@@ -70,7 +70,7 @@
 								</div>
 								<div class="g-recaptcha" data-sitekey="6LftNnkcAAAAAOeBWr_xDWags8MYmD4MZO5bK4iR"></div>
 								<div class="col-md-12">
-									<input class="btn btn-outlined" type="submit" value="Register">
+									<input class="btn btn-outlined" type="submit" value="Register" onclick="registerBtnClickHandler(event)">
 								</div>
 							</div>
 						</div>
@@ -81,6 +81,8 @@
 	</main>
 </div>
 {% block js %}
+<!-- Register Custom JS -->
+<script src="{% static 'js/account/register.js' %}"></script>
 <!-- Google Recaptcha -->
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <!-- Google Validated Signin -->

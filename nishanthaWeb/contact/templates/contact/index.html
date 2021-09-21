@@ -29,11 +29,8 @@
     <main class="contact_area inner-page-sec-padding-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <!-- <div id="google-map"></div> -->
-                    <iframe id="google-iframe"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.4847478745005!2d79.9357962151343!3d7.069657718533441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f9f588355035%3A0x68655c140041c07a!2sNishantha%20publishers!5e0!3m2!1sen!2slk!4v1632027936595!5m2!1sen!2slk"
-                        allowfullscreen="" loading="lazy"></iframe>
+                <div class="col-lg-12 map-responsive">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.4847935004736!2d79.9357962152043!3d7.069652394894085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f9f588355035%3A0x68655c140041c07a!2sNishantha%20publishers!5e0!3m2!1sen!2slk!4v1632134569112!5m2!1sen!2slk" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
             <div class="row mt--60 ">
@@ -75,20 +72,18 @@
                 </div>
                 <div class="col-lg-7 col-md-7 col-12 mt--30 mt-md--0">
                     <div class="contact_form">
-                        <h3 class="ct_title">Send Us a Message</h3>
+                        <h3 class="ct_title">අපට පණිවිඩයක් එවීමට</h3>
                         <form id="contact-form" action="php/mail.php" method="post" class="contact-form">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Your Name <span class="required">*</span></label>
+                                        {% if user.is_authenticated %}
+                                        <input type="text" id="con_name" name="con_name" class="form-control" required value="{{ user.username }}">
+                                        {% else %}
                                         <input type="text" id="con_name" name="con_name" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Your Email <span class="required">*</span></label>
-                                        <input type="email" id="con_email" name="con_email" class="form-control"
-                                            required>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -105,8 +100,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-btn">
-                                        <button type="submit" value="submit" id="submit" class="btn btn-black"
-                                            name="submit">send</button>
+                                        <button type="submit" value="submit" id="submit" class="btn btn-black" name="submit" onclick="sendMessage(event)">send</button>
                                     </div>
                                     <div class="form__output"></div>
                                 </div>
@@ -122,4 +116,9 @@
     </main>
     <!-- Cart Page End -->
 </div>
+{% endblock %}
+
+{% block js %}
+{% load static %}
+<script src="{% static 'js/contact/contact.js' %}"></script>
 {% endblock %}

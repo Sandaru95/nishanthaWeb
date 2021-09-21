@@ -3,7 +3,7 @@ from django.views.generic.base import View, TemplateView
 
 import requests
 import json
-import smtplib
+from random import randint
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -11,15 +11,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from .forms import CreateUserForm
-
-# Email Information Goes in here
-sender_email = "sandarurasanjana20@gmail.com"
-password = "Bestprogrammer~~!!1234"
-message = "welcome to our Nishantha Online Book Store"
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.starttls()
-server.login(sender_email, password)
  
+from .functions.emaill_function import py_mail, py_mail_verifycode
 
 class IndexView(TemplateView):
     template_name = "account/index.html"
@@ -68,9 +61,17 @@ class RegisterView(View):
             form.save()
             messages.success(request, "Account was created. Please login to proceed.")
             # Sending an Email
-            server.sendmail(sender_email, request.POST['email'], message)
+            username = form.cleaned_data['username']
+            py_mail(request.POST['email'], username)
 
             return redirect("account:login")
         else:
             form = CreateUserForm()
             return render(request, self.template_name, {'form': form})
+
+class RegisterVerificationView(View):
+    magic_number = randint(0, 15000)
+
+    def post(self, request):
+        py_mail_verifycode(request.POST['email'], request.POST['username'], self.magic_number)
+        return HttpResponse(str(self.magic_number))

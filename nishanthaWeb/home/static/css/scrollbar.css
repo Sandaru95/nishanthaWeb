@@ -1,0 +1,24 @@
+/* This will work on Firefox */
+/* * {
+    scrollbar-width: thin;
+    /* scrollbar-color: blue orange; */
+
+/* Targtes on Chrome, Edge, and Safari */
+    /* *::-webkit-scrollbar {
+    scrollbar-color: gray;
+    width: 12px;
+} */
+
+/* *::-webkit-scrollbar-track {
+    /* background: orange; */
+/* } */ 
+
+/* *::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+} */
+/* *::-webkit-scrollbar{
+    width: 20px;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+} */

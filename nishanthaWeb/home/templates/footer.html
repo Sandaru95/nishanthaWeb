@@ -10,12 +10,11 @@
             <div class=" col-xl-3 col-lg-4 col-sm-6">
                 <div class="single-footer pb--40">
                     <div class="brand-footer footer-title">
-                        <img src="{% static 'image/logo--footer.png' %}">
+                        <img src="{% static 'image/logo_nishantha.png' %}">
                     </div>
                     <div class="footer-contact">
-                        <p><span class="label">Address:</span><span class="text">248, Bollatha, Ganemulla.
-                                11024 LK</span></p>
-                        <p><span class="label">Phone:</span><span class="text">+011 224 7436</span></p>
+                        <p><span class="label">Address:</span><span class="text">248, Bollatha, Ganemulla. Sri Lanka</span></p>
+                        <p><span class="label">Hotline:</span><span class="text">+(94) 11 224 7436</span></p>
                         <p><span class="label">Email:</span><span class="text">nishanthapubli@gmail.com</span></p>
                     </div>
                 </div>
@@ -26,11 +25,11 @@
                         <h3>Information</h3>
                     </div>
                     <ul class="footer-list normal-list">
-                        <li><a href="#">Prices drop</a></li>
-                        <li><a href="#">New products</a></li>
-                        <li><a href="#">Best sales</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Sitemap</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Download</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Delivery Information</a></li>
                     </ul>
                 </div>
             </div>
@@ -40,11 +39,11 @@
                         <h3>Extras</h3>
                     </div>
                     <ul class="footer-list normal-list">
-                        <li><a href="#">Delivery</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Stores</a></li>
-                        <li><a href="#">Contact us</a></li>
                         <li><a href="#">Sitemap</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Gift Vouchers</a></li>
+                        <li><a href="#">Upcoming Events</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,13 +52,14 @@
                     <h3>Newsletter Subscribe</h3>
                 </div>
                 <div class="newsletter-form mb--30">
-                    <form action="./php/mail.php">
+                    <form action="">
+                        {% csrf_token %}
                         <input type="email" class="form-control" placeholder="Enter Your Email Address Here...">
-                        <button class="btn btn--primary w-100">Subscribe</button>
+                        <button class="btn btn--primary w-100" onclick="addToNewsletter(event)">Subscribe</button>
                     </form>
                 </div>
                 <div class="social-block">
-                    <h3 class="title">STAY CONNECTED</h3>
+                    <h3 class="title">අප හා එක්වන්න</h3>
                     <ul class="social-list list-inline">
                         <li class="single-social facebook"><a href="#"><i class="ion ion-social-facebook"></i></a>
                         </li>
